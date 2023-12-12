@@ -23,3 +23,5 @@ Writing Automated Tests:
 - How to use ComposeTestRule to launch the app with a test.
 - How to interact with composables in an instrumentation test.
 - How to run tests.
+
+Reference: https://developer.android.com/courses/android-basics-compose/course
