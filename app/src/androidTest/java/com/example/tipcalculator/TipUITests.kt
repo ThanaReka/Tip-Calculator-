@@ -25,27 +25,29 @@ class TipUITests {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     TipTimeLayout()
                 }
-                // UI components can be accessed as nodes through the composeTestRule.
 
-                // pass in the text that you want entered to fill the TextField composable
-                // by calling the performTextInput() method
-                /*
-                 * make sure that the Text composable displays the correct tip with an assertion
-                 * by using the assertExists() method, which directly calls assertions on UI components
-                */
-//                val expectedTip = NumberFormat.getCurrencyInstance().format(2)
-//                composeTestRule.onNodeWithText("Tip Amount: $expectedTip").assertExists(
-//                    "No node with this text was found."
-//                )
             }
         }
+
+        /*
+         * UI components can be accessed as nodes through the composeTestRule.
+         * pass in the text that you want entered to fill the TextField composable
+         * by calling the performTextInput() method
+         */
+
         composeTestRule.onNodeWithText("Bill Amount")
             .performTextInput("10")
         composeTestRule.onNodeWithText("Tip Percentage").performTextInput("20")
 
         val expectedTip = NumberFormat.getCurrencyInstance().format(2)
+        /*
+         * make sure that the Text composable displays the correct tip with an assertion
+         * by using the assertExists() method, which directly calls assertions on UI components
+         */
         composeTestRule.onNodeWithText("Tip Amount: $expectedTip").assertExists(
             "No node with this text was found."
         )
     }
 }
+
+//https://stackoverflow.com/questions/75890911/testing-a-composable-with-asserttextequals-fails-with-illegalstateexception
